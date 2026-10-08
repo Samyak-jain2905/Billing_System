@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Lock, User } from 'lucide-react';
 import api from '../lib/api';
 
@@ -8,6 +8,7 @@ export default function Login() {
   const [password, setPassword] = useState('admin123');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
 
   const handleLogin = async (e: React.FormEvent) => {
@@ -25,7 +26,7 @@ export default function Login() {
         localStorage.setItem('userName', res.data.username);
         
         // Redirect to POS/Dashboard
-        window.location.href = '/pos';
+        navigate('/pos');
       }
     } catch (err: any) {
       setError('Invalid username or password');
