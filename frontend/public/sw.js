@@ -22,9 +22,7 @@ self.addEventListener('fetch', event => {
         if (response) {
           return response;
         }
-        return fetch(event.request).catch(() => {
-            // Fallback for offline API requests could go here
-        });
+        return fetch(event.request);
       }
     )
   );

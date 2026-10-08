@@ -78,7 +78,8 @@ export default function Reports() {
   };
 
   const printInvoice = (id: number) => {
-    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
+    const rawApiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
+    const apiUrl = rawApiUrl.endsWith('/api') ? rawApiUrl : `${rawApiUrl.replace(/\/$/, '')}/api`;
     window.open(`${apiUrl}/invoices/${id}/pdf`, '_blank');
   };
 

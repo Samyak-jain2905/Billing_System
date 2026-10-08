@@ -174,7 +174,8 @@ export default function POS() {
       setIsPaymentModalOpen(false);
 
       if (localStorage.getItem('printer_auto') === 'true') {
-        const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
+        const rawApiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
+        const apiUrl = rawApiUrl.endsWith('/api') ? rawApiUrl : `${rawApiUrl.replace(/\/$/, '')}/api`;
         window.open(`${apiUrl}/invoices/${newInvoice.id}/pdf`, '_blank');
       }
       
@@ -487,7 +488,8 @@ export default function POS() {
             <div className="grid grid-cols-2 gap-4 w-full">
               <button 
                 onClick={() => {
-                  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
+                  const rawApiUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
+        const apiUrl = rawApiUrl.endsWith('/api') ? rawApiUrl : `${rawApiUrl.replace(/\/$/, '')}/api`;
                   window.open(`${apiUrl}/invoices/${completedInvoice.id}/pdf`, '_blank');
                 }}
                 className="py-4 bg-gray-900 text-white font-bold rounded-xl hover:bg-gray-800 transition-colors flex justify-center items-center gap-2 shadow-lg"
