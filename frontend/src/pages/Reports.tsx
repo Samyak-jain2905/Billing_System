@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Search, Printer, FileText, Download, TrendingUp, IndianRupee, Package, DownloadCloud } from 'lucide-react';
 import api from '../lib/api';
 

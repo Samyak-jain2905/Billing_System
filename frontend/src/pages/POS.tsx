@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Search, Plus, Minus, Trash2, Printer, X, CreditCard, Banknote, Smartphone, Receipt, Keyboard } from 'lucide-react';
 import api from '../lib/api';
 
@@ -425,7 +425,7 @@ export default function POS() {
                         type="number" 
                         className="w-full pl-8 pr-4 py-3 rounded-lg border-gray-300 border focus:ring-2 focus:ring-blue-500 font-bold text-xl"
                         value={cashReceived}
-                        onChange={(e) => setCashReceived(e.target.value)}
+                        onChange={(e) => setCashReceived(e.target.value === '' ? '' : Number(e.target.value))}
                         placeholder="0.00"
                         autoFocus
                       />

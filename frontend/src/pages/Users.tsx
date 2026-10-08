@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Users as UsersIcon, Plus, Trash2, Shield } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Plus, Trash2, Shield } from 'lucide-react';
 import api from '../lib/api';
 
 export default function Users() {

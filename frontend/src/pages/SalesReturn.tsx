@@ -92,7 +92,7 @@ export default function SalesReturn() {
     if (!invoice) return;
     
     const itemsToReturn = Object.entries(returnQuantities)
-      .filter(([id, qty]) => qty > 0)
+      .filter(([_, qty]) => qty > 0)
       .map(([id, qty]) => ({
         invoiceItemId: parseInt(id),
         returnQuantity: qty
