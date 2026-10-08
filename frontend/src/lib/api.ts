@@ -1,8 +1,12 @@
 import axios from 'axios';
 
 const rawBaseUrl = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
+let baseUrl = rawBaseUrl.replace(/\/+$/, ''); // Remove any trailing slashes
+if (!baseUrl.endsWith('/api')) {
+  baseUrl += '/api';
+}
 const api = axios.create({
-  baseURL: rawBaseUrl.endsWith('/api') ? rawBaseUrl : `${rawBaseUrl.replace(/\/$/, '')}/api`,
+  baseURL: baseUrl,
 });
 
 api.interceptors.request.use((config) => {
