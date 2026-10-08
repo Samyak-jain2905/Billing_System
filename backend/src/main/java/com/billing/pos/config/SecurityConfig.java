@@ -74,7 +74,15 @@ public class SecurityConfig {
         if ("*".equals(frontendUrl)) {
             configuration.setAllowedOriginPatterns(Arrays.asList("*"));
         } else {
-            configuration.setAllowedOrigins(Arrays.asList(frontendUrl.split(",")));
+            java.util.List<String> origins = new java.util.ArrayList<>();
+            for (String url : frontendUrl.split(",")) {
+                url = url.trim();
+                if (url.endsWith("/")) {
+                    url = url.substring(0, url.length() - 1);
+                }
+                origins.add(url);
+            }
+            configuration.setAllowedOrigins(origins);
             configuration.setAllowCredentials(true);
         }
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
